@@ -32,8 +32,7 @@ public class Student implements Serializable {
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "course_id")
-    @JoinColumn(name = "course_id", referencedColumnName = "course_id")
+    @JoinColumn(name = "course_fk", referencedColumnName = "course_id")
     @JsonBackReference
     private Course course;
 
