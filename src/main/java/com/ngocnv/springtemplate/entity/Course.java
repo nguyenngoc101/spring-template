@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
-public class Course implements Serializable {
+public class Course extends AuditModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
