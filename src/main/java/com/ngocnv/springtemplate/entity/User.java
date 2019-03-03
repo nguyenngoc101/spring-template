@@ -1,13 +1,11 @@
 package com.ngocnv.springtemplate.entity;
 
 import com.ngocnv.springtemplate.validate.FieldsValueMatch;
-import com.ngocnv.springtemplate.validate.In;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 @FieldsValueMatch.List({
     @FieldsValueMatch(
@@ -27,6 +25,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
+
   private String email;
   private String verifyEmail;
   private String password;
