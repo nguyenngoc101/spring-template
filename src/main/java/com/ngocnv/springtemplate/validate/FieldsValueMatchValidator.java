@@ -9,11 +9,13 @@ public class FieldsValueMatchValidator implements ConstraintValidator<FieldsValu
   private String field;
   private String fieldMatch;
 
+  @Override
   public void initialize(FieldsValueMatch constraint) {
     this.field = constraint.field();
     this.fieldMatch = constraint.fieldMatch();
   }
 
+  @Override
   public boolean isValid(Object obj, ConstraintValidatorContext context) {
     Object fieldValue = new BeanWrapperImpl(obj).getPropertyValue(field);
     Object fieldMatchValue = new BeanWrapperImpl(obj).getPropertyValue(fieldMatch);

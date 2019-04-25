@@ -20,7 +20,6 @@ public class StudentService {
 
   @Transactional
   public Student getStudent(@PathVariable Long id) {
-    Student student = studentRepository.findById(id).orElse(null);
-    return student;
+    return studentRepository.findById(id).orElse(null);
   }
 }

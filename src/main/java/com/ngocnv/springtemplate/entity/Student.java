@@ -34,13 +34,6 @@ public class Student extends AuditModel implements Serializable {
   @JsonFormat(pattern = "yyyy-MM-dd")
   private String birthDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "parent_id", nullable = false)
-//    private Student parent;
-//
-//    @OneToMany(mappedBy = "parent")
-//    private List<Student> children;
-
   @Embedded
   private Address address;
 
@@ -56,16 +49,6 @@ public class Student extends AuditModel implements Serializable {
     this.studentId = studentId;
     this.name = name;
   }
-
-//    public Student(@NotBlank String studentId, @NotBlank String name, String birthDate, Student parent, List<Student> children, Address address, Course course) {
-//        this.studentId = studentId;
-//        this.name = name;
-//        this.birthDate = birthDate;
-//        this.parent = parent;
-//        this.children = children;
-//        this.address = address;
-//        this.course = course;
-//    }
 
   public Student(@NotBlank String studentId, @NotBlank String name, String birthDate,
       Address address) {

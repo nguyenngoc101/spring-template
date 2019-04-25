@@ -29,7 +29,10 @@ public class Account implements UserDetails {
   @ElementCollection(fetch = FetchType.EAGER)
   private List<String> roles;
 
-  private boolean accountNonExpired, accountNonLocked, credentialsNonExpired, enabled;
+  private boolean accountNonExpired;
+  private boolean accountNonLocked;
+  private boolean credentialsNonExpired;
+  private boolean enabled;
 
   public Account() {
     this.accountNonExpired = true;

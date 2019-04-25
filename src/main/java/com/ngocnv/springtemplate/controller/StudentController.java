@@ -51,12 +51,4 @@ public class StudentController {
     Student student = studentDto.toStudent();
     return studentRepository.save(student);
   }
-
-  private Student buildAStudent() {
-    Student student = new Student();
-    student.setName("Ngocnv");
-    student.setStudentId("1");
-    student.setBirthDate("01-10-1988");
-    return student;
-  }
 }

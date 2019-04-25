@@ -4,6 +4,8 @@ import com.ngocnv.springtemplate.entity.Account;
 import com.ngocnv.springtemplate.service.AccountService;
 import java.util.Arrays;
 import javax.security.auth.login.AccountException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SpringTemplateApplication {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(SpringTemplateApplication.class);
 
   public static void main(String[] args) {
     SpringApplication.run(SpringTemplateApplication.class, args);
@@ -26,7 +30,7 @@ public class SpringTemplateApplication {
   CommandLineRunner init(
       AccountService accountService
   ) {
-    return (evt) -> Arrays.asList(
+    return evt -> Arrays.asList(
         "user,admin,john,robert,ana".split(",")).forEach(
         username -> {
           Account acct = new Account();
@@ -45,7 +49,7 @@ public class SpringTemplateApplication {
           try {
             accountService.register(acct);
           } catch (AccountException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage(), e);
           }
         }
     );

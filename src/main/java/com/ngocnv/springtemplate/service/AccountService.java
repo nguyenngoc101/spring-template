@@ -25,7 +25,7 @@ public class AccountService implements UserDetailsService {
   private PasswordEncoder passwordEncoder;
 
   @Override
-  public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+  public UserDetails loadUserByUsername(String s) {
     Optional<Account> account = accountRepo.findByUsername(s);
     if (account.isPresent()) {
       return account.get();
@@ -34,7 +34,7 @@ public class AccountService implements UserDetailsService {
     }
   }
 
-  public Account findAccountByUsername(String username) throws UsernameNotFoundException {
+  public Account findAccountByUsername(String username) {
     Optional<Account> account = accountRepo.findByUsername(username);
     if (account.isPresent()) {
       return account.get();
@@ -55,7 +55,7 @@ public class AccountService implements UserDetailsService {
   }
 
   @Transactional // To successfully remove the date @Transactional annotation must be added
-  public void removeAuthenticatedAccount() throws UsernameNotFoundException {
+  public void removeAuthenticatedAccount() {
     String username = SecurityContextHolder.getContext().getAuthentication().getName();
     Account acct = findAccountByUsername(username);
     accountRepo.deleteAccountById(acct.getId());

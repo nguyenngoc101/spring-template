@@ -1,5 +1,7 @@
 package com.ngocnv.springtemplate.tdd;
 
+import java.util.Objects;
+
 public class Money {
 
   protected int amount;
@@ -11,9 +13,25 @@ public class Money {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    Money money = (Money) obj;
-    return this.amount == money.amount && currency.equals(money.currency);
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Money money = (Money) o;
+
+    if (amount != money.amount) {
+      return false;
+    }
+    return currency != null ? currency.equals(money.currency) : money.currency == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(amount, currency);
   }
 
   public Money times(int multiplier) {
